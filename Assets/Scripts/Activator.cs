@@ -7,7 +7,7 @@ public class Activator : MonoBehaviour
 {
     public KeyCode key;
     bool active = false;
-    GameObject note,gm;
+    GameObject note, gm;
     SpriteRenderer sr;
     Color old;
     public bool createMode;
@@ -38,8 +38,11 @@ public class Activator : MonoBehaviour
         }
         if(Input.GetKeyDown(key)&&active){
             Destroy(note);
+            gm.GetComponent<GameManager>().AddStreak();
             AddScore();
             active=false;
+        } else if(Input.GetKeyDown(key)&&!active){
+            gm.GetComponent<GameManager>().ResetStreak();
         }
     
     }
@@ -52,7 +55,8 @@ public class Activator : MonoBehaviour
     }
 
     void OnTriggerExit2D(Collider2D col){
-    active = false;
+        active = false;
+        gm.GetComponent<GameManager>().ResetStreak();
     }
 
     void AddScore(){
