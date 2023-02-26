@@ -7,11 +7,12 @@ public class Activator : MonoBehaviour
 {
     public KeyCode key;
     bool active = false;
-    GameObject note;
+    GameObject note,gm;
     SpriteRenderer sr;
     Color old;
     public bool createMode;
     public GameObject n;
+    
 
 
     void Awake(){
@@ -19,7 +20,9 @@ public class Activator : MonoBehaviour
     }
 
     void Start(){
+        gm=GameObject.Find("GameManager");
         old=sr.color;
+
     }
 
     void Update()
@@ -53,7 +56,7 @@ public class Activator : MonoBehaviour
     }
 
     void AddScore(){
-        PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score")+100);
+        PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score")+gm.GetComponent<GameManager>().GetScore());
     }
 
     IEnumerator Pressed(){
