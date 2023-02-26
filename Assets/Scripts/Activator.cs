@@ -48,6 +48,10 @@ public class Activator : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col){
+        if(col.gameObject.tag=="WinNote"){
+            gm.GetComponent<GameManager>().Win();
+        }
+
         active = true;
         if(col.gameObject.tag=="Note")
             note=col.gameObject;
