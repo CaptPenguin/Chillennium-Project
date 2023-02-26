@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class Volume : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Slider volumeSlider;
+    public AudioMixer mixer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void SetVolume(){
+        mixer.SetFloat("Volume", volumeSlider.value);
     }
 }
