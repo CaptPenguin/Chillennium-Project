@@ -24,9 +24,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void AddStreak(){
+        streak++;
         if(PlayerPrefs.GetInt("LoveMeter")+1<25)
             PlayerPrefs.SetInt("LoveMeter",PlayerPrefs.GetInt("LoveMeter")+1);
-        streak++;
         if(streak >= 4)
             multiplier = 4;
         else if(streak >= 2)
