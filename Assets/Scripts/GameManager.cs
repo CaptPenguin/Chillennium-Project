@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {   
@@ -9,7 +10,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        PlayerPrefs.SetInt("Score",0);
+        PlayerPrefs.SetInt("LoveMeter",25);
     }
 
     void Update()
@@ -22,26 +24,35 @@ public class GameManager : MonoBehaviour
     }
 
     public void AddStreak(){
+        if(PlayerPrefs.GetInt("LoveMeter")+1<25)
+            PlayerPrefs.SetInt("LoveMeter",PlayerPrefs.GetInt("LoveMeter")+1);
         streak++;
-        if(streak >= 6){
+        if(streak >= 4)
             multiplier = 4;
-        }
-        else if(streak >= 4){
+        else if(streak >= 2)
             multiplier = 3;
-        }
-        else if(streak >= 2){
+        else if(streak >= 2)
             multiplier = 2;
-        }
-        else{
+        else
             multiplier = 1;
-        }
          UpdateGUI();
     }
 
     public void ResetStreak(){
+        PlayerPrefs.SetInt("LoveMeter",PlayerPrefs.GetInt("LoveMeter")-2);
+        if(PlayerPrefs.GetInt("LoveMeter")>0)
+            Lose();
         streak=0;
         multiplier=1;
         UpdateGUI();
+    }
+
+    public void Win(){
+        SceneManager.LoadScene("WIn");
+    }
+
+    void Lose(){
+
     }
 
     void UpdateGUI(){
