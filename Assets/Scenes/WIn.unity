@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 1564541887}
   - component: {fileID: 1564541886}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Win Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
