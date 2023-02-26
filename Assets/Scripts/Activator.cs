@@ -22,7 +22,6 @@ public class Activator : MonoBehaviour
     void Start(){
         gm=GameObject.Find("GameManager");
         old=sr.color;
-
     }
 
     void Update()
